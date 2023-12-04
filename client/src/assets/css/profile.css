@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@font-face {
+  font-family: "Mars";
+  src: url("../fonts/Mars.ttf");
+}
+* .hidden {
+  display: none;
+}
+
+html,
+body {
+  display: flex;
+  flex-flow: column;
+  background-color: #292f36;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  margin: 0;
+}
+
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+input,
+button,
+select {
+  border: white solid 0.1rem;
+  border-radius: 0.5rem;
+  color: black;
+  padding: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+button,
+.hoverable {
+  cursor: pointer;
+}
+button:hover,
+.hoverable:hover {
+  color: #ff8c42;
+}
+
+h1 {
+  font-family: "Mars", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 1rem;
+  font-size: 4rem;
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bc4f41;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #bc4f41;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 3rem;
+  display: flex;
+  flex-shrink: 0;
+  padding-top: 0.5rem;
+  background-color: #4c4c4c;
+}
+footer nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+footer nav a {
+  color: #c5c5c5;
+}
+footer nav :nth-child(3) {
+  transform: translateY(-2rem);
+  text-align: center;
+}
+footer nav :nth-child(3) span {
+  font-size: 4rem;
+  border-radius: 12rem 12rem 0 0;
+  width: 6rem;
+  background-color: #4c4c4c;
+  padding-top: 1rem;
+}
+footer nav #profile {
+  text-decoration: underline;
+  color: white;
+}
+footer nav .currentPage {
+  color: #ff8c42;
+}
+footer nav .material-symbols-outlined {
+  font-size: 3rem;
+}
+footer nav .material-symbols-outlined:hover {
+  color: #ff8c42;
+}
+
+.filled {
+  font-variation-settings: "FILL" 1;
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+}
+
+.disable-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */ /* Konqueror */
+  -moz-user-select: none; /* Old version of Firefox */
+  -ms-user-select: none; /* Internet Explorer or Edge */
+  user-select: none; /* All modern browsers */
+}
+
+body {
+  display: flex;
+  font-size: 1.5rem;
+  flex-direction: column;
+}
+
+main {
+  height: 93.65vh;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+article {
+  width: 80%;
+  display: flex;
+  margin: 3rem 0 3rem 0;
+  border: white solid 0.1rem;
+  padding: 2rem 2rem 2rem 3rem;
+  line-height: 120%;
+}
+article #personal-info {
+  padding-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+article h2 {
+  font-size: 1.8rem;
+}
+article div {
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+article figure {
+  border-right: white solid 0.1rem;
+  width: 15rem;
+  padding-right: 3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.5rem;
+}
+article figure img {
+  margin-bottom: 1.5rem;
+}
+article li {
+  margin-bottom: 0.5rem;
+}
+article li p {
+  display: inline;
+  margin-left: 0.5rem;
+}
+
+#interests {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  align-items: center;
+}
+#interests span {
+  font-size: 3rem;
+}
+#interests p {
+  margin-bottom: 0.2rem;
+}
+#interests #interests-container,
+#interests #non-interests-container {
+  width: 20rem;
+  height: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  gap: 1rem;
+  background: gray;
+  padding: 0.5rem;
+  border: gray solid 0.5rem;
+  border-radius: 0.5rem;
+  list-style: none;
+}
+#interests #interests-container li,
+#interests #non-interests-container li {
+  height: 1rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background: #454545;
+  border: 0.1rem;
+  border-radius: 0.2rem;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.2/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vertx/3.9.4/vertx-eventbus.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/helper/api.js"></script>
+    <script src="assets/js/helper/localstorage.js"></script>
+    <script src="assets/js/helper/helper.js"></script>
+    <script src="assets/js/helper/eb.js"></script>
+    <script src="assets/js/event-creator/create-event.js" defer></script>
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/create-event.css">
+
+    <link rel="icon" type="image/png" href="images/Events_United_Transparent.png">
+
+    <title>Create Event</title>
+</head>
+<body id="event-creator">
+    <h1>Event creator</h1>
+    <main>
+        <form>
+            <div class="parent">
+                    <div class="left">
+                    <label for="title"><span class="required">* </span> Title: </label>
+                    <input type="text" id="title" name="title" required placeholder="Ex. Events United launch"/>
+        
+                    <label for="description"><span class="required">* </span> Description: </label>
+                    <textarea name="description" id="description" cols="30" rows="7" maxlength="5000"></textarea>
+    
+                
+                    <label for="start-date"><span class="required">* </span> Start date: </label>
+                    <input type="date" id="start-date" name="start date" required/>
+        
+                    <label for="end-date"><span class="required">* </span> End date: </label>
+                    <input type="date" id="end-date" name="end date" required/>
+                    
+        
+                    <label for="interests"><span class="required">* </span> Main theme: </label>
+                    <select id="interests" name="interests"></select>
+                </div>
+                <div class="right">
+                    <fieldset>
+                        <legend><span class="required">* </span> Ticket price (in marscoin): </legend>
+                        <input type="number" id="ticket-price" min="0" max="50" name="ticket price" required placeholder="20"/>    
+                    </fieldset>
+                    <fieldset>
+                        <legend>Expected amount of attendees: </legend>
+                        <input type="number" id="expected-attendees" min="0" max="9999" name="expected-attendees" placeholder="200"/>    
+                    </fieldset>
+                   <fieldset>
+                        <legend>Event Icon: </legend>
+                        <input type="file" id="event-icon" name="event-icon"/>
+                   </fieldset>
+                   <fieldset>
+                        <legend>Banner Icon: </legend>
+                        <input type="file" id="event-banner" name="event-banner"/>
+                   </fieldset>
+                    <fieldset>
+                        <legend><span class="required">* </span> Location: </legend>
+                        <input type="text" id="location" name="location" required placeholder="Ex. Mars central dome"/>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="actions">
+                <button id="cancel-event" class="hoverable">Cancel creation</button>
+                <button id="create-event" value="Create event!" class="hoverable">Create event</button>
+            </div>
+        </form>
+
+        <dialog id="modal">
+            <p id="confirm-message">Are you sure you want to create the event?</p>
+            <div class="actions">
+                <button id="cancel">Cancel</button>
+                <button id="confirm">Confirm</button>
+            </div>
+        </dialog>
+
+        <div id="creation-response" class="hidden">
+        <div class="response-text"></div>
+        <div class="actions">
+            <button id="create-again">Request another event</button>
+            <button id="back-to-main">Back to events overview</button>
+        </div>
+        </div>
+
+    </main>
+    <footer>
+        <nav id="bottom-navigation">
+            <a href="map.html"><span class="material-symbols-outlined">location_on</span></a>
+            <a href="friends.html"><span class="material-symbols-outlined">groups</span></a>
+            <a href="index.html"><span class="material-symbols-outlined">calendar_today</span></a>
+            <a href="tickets.html"><span class="material-symbols-outlined">confirmation_number</span></a>
+            <a href="profile.html"><span class="material-symbols-outlined">person</span></a>  
+        </nav>
+    </footer>
+</body>
+</html>

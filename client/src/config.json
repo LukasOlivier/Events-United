@@ -1,0 +1,9 @@
+{
+  "localhost": "http://localhost:8080",
+  "localgroup": "",
+
+  "host": "https://project-ii.ti.howest.be",
+  "group": "mars-02",
+
+  "folder": ""
+}

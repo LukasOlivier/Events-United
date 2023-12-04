@@ -1,0 +1,36 @@
+image: timbru31/java-node:11-azul-alpine-jdk
+
+stages:
+  - QA
+  - deploy
+
+validateHTML:
+  stage: QA
+  script:
+    - npm install
+    - npm run validate-html
+
+sonar:
+  stage: QA
+  script:
+    - npm install
+    - npm run validate-sonar-ci
+
+deploy:
+  stage: deploy
+  only:
+    - main
+  except:
+    changes:
+      - documents/**/*
+  script:
+    - apk add openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - pwd
+    - rm src/config.json
+    - ssh-keyscan -H 172.18.18.200 >> ~/.ssh/known_hosts
+    - scp -qr ./src/* gitlab-runner@172.18.18.200:"/var/www/html/2022-2023/mars-${CI_PROJECT_NAMESPACE:(-2)}/"
+  environment: production

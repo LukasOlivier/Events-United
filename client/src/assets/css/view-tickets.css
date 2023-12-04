@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@font-face {
+  font-family: "Mars";
+  src: url("../fonts/Mars.ttf");
+}
+* .hidden {
+  display: none;
+}
+
+html,
+body {
+  display: flex;
+  flex-flow: column;
+  background-color: #292f36;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  margin: 0;
+}
+
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+input,
+button,
+select {
+  border: white solid 0.1rem;
+  border-radius: 0.5rem;
+  color: black;
+  padding: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+button,
+.hoverable {
+  cursor: pointer;
+}
+button:hover,
+.hoverable:hover {
+  color: #ff8c42;
+}
+
+h1 {
+  font-family: "Mars", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 1rem;
+  font-size: 4rem;
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bc4f41;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #bc4f41;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 3rem;
+  display: flex;
+  flex-shrink: 0;
+  padding-top: 0.5rem;
+  background-color: #4c4c4c;
+}
+footer nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+footer nav a {
+  color: #c5c5c5;
+}
+footer nav :nth-child(3) {
+  transform: translateY(-2rem);
+  text-align: center;
+}
+footer nav :nth-child(3) span {
+  font-size: 4rem;
+  border-radius: 12rem 12rem 0 0;
+  width: 6rem;
+  background-color: #4c4c4c;
+  padding-top: 1rem;
+}
+footer nav #profile {
+  text-decoration: underline;
+  color: white;
+}
+footer nav .currentPage {
+  color: #ff8c42;
+}
+footer nav .material-symbols-outlined {
+  font-size: 3rem;
+}
+footer nav .material-symbols-outlined:hover {
+  color: #ff8c42;
+}
+
+.filled {
+  font-variation-settings: "FILL" 1;
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+}
+
+.disable-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */ /* Konqueror */
+  -moz-user-select: none; /* Old version of Firefox */
+  -ms-user-select: none; /* Internet Explorer or Edge */
+  user-select: none; /* All modern browsers */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+body {
+  overflow-y: hidden;
+}
+
+header {
+  height: calc(10vh - 0.8rem);
+  text-align: center;
+}
+header h1 {
+  padding-top: 1rem;
+  font-size: 3rem;
+}
+
+#scroll-container {
+  width: 99%;
+  height: 83vh;
+  overflow-y: scroll;
+}
+
+#ticket-container {
+  border: #d8d8d8 solid 2rem;
+  width: 60%;
+  background: #d8d8d8;
+  margin-right: auto;
+  margin-left: auto;
+}
+#ticket-container .ticket-c {
+  display: grid;
+  grid-template-areas: "leftside leftside leftside leftside rightside";
+  background-color: white;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  border: transparent dotted 1rem;
+  -o-border-image: url(../../images/border.png) 26 round;
+     border-image: url(../../images/border.png) 26 round;
+}
+#ticket-container .ticket-c .ticket {
+  grid-area: leftside;
+  padding: 1rem;
+  height: 10rem;
+  display: flex;
+  color: black;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+#ticket-container .ticket-c .ticket .event-interest {
+  text-transform: lowercase;
+}
+#ticket-container .ticket-c .moreInfoButton {
+  grid-area: rightside;
+  width: 10rem;
+  border-left: #d8d8d8 dotted 0.5rem;
+}
+#ticket-container .expired .ticket-c {
+  border-left: transparent dotted 1rem;
+  -o-border-image: url(../../images/border.png);
+     border-image: url(../../images/border.png);
+}
+#ticket-container img {
+  margin-right: 1rem;
+}
+#ticket-container li {
+  margin-top: 0.2rem;
+}
+#ticket-container h3 {
+  margin: 0.5rem 0 1rem 0;
+  font-size: 2rem;
+}
+#ticket-container .ticket:not(.ticket:last-of-type) {
+  margin-bottom: 2rem;
+}
+#ticket-container #no-tickets {
+  text-align: center;
+  font-size: 2rem;
+}
+#ticket-container #no-tickets span {
+  font-size: 1rem;
+}

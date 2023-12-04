@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Events United - Inspect event</title>
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/inspect-event.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.2/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vertx/3.9.4/vertx-eventbus.min.js"></script>
+    <script src="assets/js/helper/localstorage.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/helper/api.js"></script>  
+    <script src="assets/js/helper/helper.js"></script>
+    <script src="assets/js/helper/eb.js"></script>
+    <script src="assets/js/inspect-event/init-inspect-event.js" defer></script>
+
+    <link rel="icon" type="image/png" href="images/Events_United_Transparent.png">
+  </head>
+  <body>
+    <header id="page-header">
+      <img
+        src="#"
+        alt="image of the event"
+        title="event-image"
+        id="event-image" />
+      <div>
+        <h2 id="event-name">event-name</h2>
+        <h3 id="event-interest">event-interest</h3>
+      </div>
+    </header>
+    <main>
+      <header id="main-header">
+        <div id="going-information">
+            <ul class="disable-select">
+                <li id="buy-button">
+                    <p id="buy-ticket"><span class="material-symbols-outlined">confirmation_number</span>Buy ticket</p>
+                </li>
+                <li>
+                    <p id="favorite-event"> <span class="material-symbols-outlined" id="favorite">favorite</span>Interested</p>
+                </li>
+                <li>
+                  <p id="going-event"><span class="material-symbols-outlined" id="going">check_circle</span>Going</p>
+              </li>
+            </ul>
+        </div>
+        <div id="chips">
+          <ul>
+            <li>
+              <span class="material-symbols-outlined">group</span>
+              <p id="event-attendees">martians-going-amount</p>
+            </li>
+            <li>
+              <span class="material-symbols-outlined">favorite</span>
+              <p id="event-interested">550 people interested</p>
+            </li>
+            <li>
+              <span class="material-symbols-outlined">location_on</span>
+              <p id="event-location">Martian Palace</p>
+            </li>
+            <li>
+              <span class="material-symbols-outlined">partly_cloudy_day</span>
+              <p>Rainy 12°C</p>
+            </li>
+            <li>
+              <span class="material-symbols-outlined">payments</span>
+              <p><span id="event-ticketprice"></span>MC</p>
+            </li>
+            <li>
+              <span class="material-symbols-outlined">calendar_month</span>
+              <p id="event-startdate"></p>
+            </li>
+          </ul>
+        </div>
+      </header>
+
+      <article>
+        <h2>Description:</h2>
+        <p id="event-description"></p>
+      </article>
+    </main>
+
+    <div id="tickets-container">
+      <div class="payment-successful hidden">
+          <h1> <span class="material-symbols-outlined" id="done-check">done</span>Payment successful!</h1>
+        <div class="options">
+          <button class="go-back-to-event">View event details</button>
+          <button id="check-tickets">View my tickets</button>
+        </div>
+      </div>
+
+      <div class="overview hidden">
+        <h2>Ticket overview:</h2>
+        <ul>
+          <li><p>Amount: <span>1</span></p></li>
+          <li><p>Name of attendee: <span class="buyer"></span></p></li>
+          <li><p>Tier: <span>basic</span></p></li>
+          <li><p class="total-price">Total price: <span class="price"></span> MC</p></li>
+          <li><p id="warning">Careful: money will be automatically deducted from your account!</p></li>
+        </ul>
+        <div class="actions">
+          <button id="go-back-overview">Go back</button>
+          <button id="confirm-ticket">Confirm</button>
+        </div>
+    </div>
+
+  
+    <div class="form hidden">
+      <ul>
+        <li><p>Amount of tickets:</p><input type="number" placeholder="Specify an amount" min="0" max="1" name="amount" id="input-amount"></li>
+        <li><p>Name of attendee:</p><input type="text" placeholder="Specify a name" name="name" id="input-name"></li>
+        <li><p>Ticket Tier:</p><select name="tier" id="input-tier">
+          <option value="basic">Basic</option>
+          <option value="premium">Premium</option>
+      </select></li>
+        <li><p class="total-price">Total price: - MC</p></li>
+      </ul>
+      <div class="actions">
+        <button class="go-back-to-event">Go back</button>
+        <button id="go-to-checkout">Go to checkout</button>
+      </div>
+  </div>
+
+    </div>
+
+    <footer>
+      <nav id="bottom-navigation">
+        <a href="map.html"
+          ><span class="material-symbols-outlined">location_on</span></a
+        >
+        <a href="friends.html"
+          ><span class="material-symbols-outlined">groups</span></a
+        >
+        <a href="index.html"
+          ><span class="material-symbols-outlined">calendar_today</span></a
+        >
+        <a href="tickets.html"
+          ><span class="material-symbols-outlined">confirmation_number</span></a
+        >
+        <a href="profile.html"
+          ><span class="material-symbols-outlined">person</span></a
+        >
+      </nav>
+    </footer>
+  </body>
+</html>

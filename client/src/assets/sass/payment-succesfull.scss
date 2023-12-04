@@ -1,0 +1,63 @@
+@use "main" as *;
+#container .hidden {
+  display: none;
+}
+
+.payment-successful {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    display: flex;
+    align-items: center;
+  }
+  .options {
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+main {
+  .material-symbols-outlined {
+    color: greenyellow;
+    font-size: 10rem;
+  }
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    display: flex;
+    justify-content: center;
+    width: 15rem;
+    font-size: large;
+  }
+}
+
+.overview {
+  ul {
+    margin-top: 2rem;
+    li {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      &:last-child {
+        font-size: 1rem;
+      }
+    }
+
+    .total-price {
+      font-size: 1.5rem;
+      border-top: 0.2rem solid white;
+      padding: 1.5rem 0 3rem 0;
+      font-weight: bold;
+    }
+  }
+  button {
+    margin: 3rem auto 0 auto;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 3rem;
+  }
+}

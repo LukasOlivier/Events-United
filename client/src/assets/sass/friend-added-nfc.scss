@@ -1,0 +1,23 @@
+@use "main" as *;
+
+body {
+    background-color: $secondary-color;
+    main {
+        h2 {
+            font-size: 3rem;
+            margin: 5rem auto;
+            padding: 0;
+            text-align: center;
+            color: $accent-color;
+            font-family: $title-font;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 5rem;
+            padding: 0;
+            text-align: center;
+            font-family: $default-font;
+        }
+    }
+}

@@ -1,0 +1,115 @@
+@use "main" as *;
+
+#map {
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+main {
+  display: flex;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+header {
+  #flex {
+    display: flex;
+  }
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+
+  form {
+    input,
+    button,
+    select {
+      width: 10rem;
+    }
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-end;
+    gap: 5rem;
+    margin-left: 5rem;
+    fieldset {
+      p {
+        margin: 0 0.5rem 0 0.5rem;
+        font-size: 1.5rem;
+        letter-spacing: 0rem;
+      }
+    }
+    label,
+    legend {
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+  }
+}
+.ol-overlay-container {
+  line-height: 0;
+}
+.material-icons {
+  color: black;
+}
+.markerNotPlaced {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+#modal {
+  width: 20rem;
+  padding: 1rem 3rem 1rem 3rem;
+  background: #e2e2e2;
+  img {
+    width: 10rem;
+    transform: translateX(-1.5rem);
+  }
+  #name {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  ul,
+  div {
+    display: flex;
+    flex-direction: row;
+  }
+  div {
+    justify-content: space-between;
+  }
+  ul {
+    margin-bottom: 3rem;
+    gap: 0.25rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+    margin: 2rem 0 0.25rem 0;
+  }
+  li {
+    padding: 0.5rem;
+    background-color: $secondary-color;
+    color: white;
+    border-radius: 0.5rem;
+    font-size: 0.7rem;
+  }
+  button {
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    border: $secondary-color;
+  }
+  #close-modal {
+    background: white;
+  }
+  #martian-action {
+    background: $accent-color;
+    color: white;
+    &:hover {
+      color: black;
+    }
+  }
+}

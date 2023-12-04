@@ -1,0 +1,138 @@
+@forward "./variables"; //NOSONAR : this is not an issue in SCSS
+@forward "./fonts"; //NOSONAR : this is not an issue in SCSS
+@forward "./mixin"; //NOSONAR : this is not an issue in SCSS
+
+@use "./variables" as *;
+@use "./fonts" as *;
+@use "./mixin" as *;
+* {
+  .hidden {
+    display: none;
+  }
+}
+html,
+body {
+  display: flex;
+  flex-flow: column;
+  background-color: $secondary-color;
+  color: white;
+  font-family: $default-font;
+  height: 100%;
+  margin: 0;
+}
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+input,
+button,
+select {
+  border: white solid 0.1rem;
+  // background-color: $secondary-color;
+  border-radius: 0.5rem;
+  color: black;
+  padding: 0.5rem;
+  font-family: $default-font;
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+button,
+.hoverable {
+  cursor: pointer;
+  &:hover {
+    color: $accent-color;
+  }
+}
+h1 {
+  font-family: "Mars", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 1rem;
+  font-size: 4rem;
+  text-align: center;
+}
+
+// scrollbar start
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bc4f41;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #bc4f41;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 3rem;
+  display: flex;
+  flex-shrink: 0;
+  padding-top: 0.5rem;
+  background-color: #4c4c4c;
+  nav {
+    a {
+      color: #c5c5c5;
+    }
+    :nth-child(3) {
+      transform: translateY(-2rem);
+      text-align: center;
+      span {
+        font-size: 4rem;
+        border-radius: 12rem 12rem 0 0;
+        width: 6rem;
+        background-color: #4c4c4c;
+        padding-top: 1rem;
+      }
+    }
+
+    #profile {
+      text-decoration: underline;
+      color: white;
+    }
+
+    .currentPage {
+      color: $accent-color;
+    }
+
+    .material-symbols-outlined {
+      font-size: 3rem;
+      &:hover {
+        color: $accent-color;
+      }
+    }
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.filled {
+  font-variation-settings: "FILL" 1;
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.disable-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Old version of Firefox */
+  -ms-user-select: none; /* Internet Explorer or Edge */
+  user-select: none; /* All modern browsers */
+}

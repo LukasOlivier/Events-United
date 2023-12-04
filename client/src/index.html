@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Events United - Home</title>
+        <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.2/dist/sockjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vertx/3.9.4/vertx-eventbus.min.js"></script>
+        <script src="assets/js/helper/localstorage.js" defer></script>
+        <script src="assets/js/main.js" defer></script>
+        <script src="assets/js/helper/helper.js" defer></script>
+        <script src="assets/js/helper/api.js" defer></script>
+        <script src="assets/js/events/initEvents.js" defer></script>
+        <script src="assets/js/events/events.js" defer></script>
+        <script src="assets/js/helper/eb.js" defer></script>
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/css/events.css">
+        <link rel="icon" type="image/png" href="images/Events_United_Transparent.png">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  </head>
+  <body id="index">
+
+    <div id="main-container">
+      <img src="images/Events_United_Transparent.png" alt="logo" title="logo" id="logo" class="hoverable">
+      <button id="create-event" class="hoverable filled"><span class="material-symbols-outlined">build</span><span>Admin</span></button>
+      <aside id="event-filters">
+        <h2>Event filters:</h2>
+        <form>
+          <div>
+            <label for="from">From:</label>
+            <input type="date" id="from">
+          </div>
+          <div>
+            <label for="until">Until:</label>
+            <input type="date" id="until">
+          </div>
+          <div>
+            <label for="interests">interest:</label>
+            <select name="interests" id="interests">
+              <option value="all">all</option>
+            </select>
+          </div>
+          <div>
+            <label for="max-distance">Max distance: <span id="distance-input-value">25</span> km</label>
+              <input id="max-distance" type="range" min="0" max="50" step="5">
+          </div>
+          <div>
+            <label for="max-price">Max price: <span id="price-input-value">25</span> MC</label>
+              <input id="max-price" type="range" min="0" max="50" step="1">
+          </div>
+          <label for="order-by">Order by:</label>
+          <select name="order-by" id="order-by">
+            <option value="date">date</option>
+            <option value="price">price</option>
+            <option value="distance" class="out-of-scope">distance</option>
+          </select>
+          <div id="order">
+            <div>
+              <input type="radio" id="ascending" name="order" value="ascending" checked="checked">
+              <label for="ascending">Ascending</label>
+            </div>
+            <div>  
+            <input type="radio" id="descending" name="order" value="descending">
+            <label for="descending">Descending</label>
+            </div>
+          </div>
+        </form>
+      </aside>
+      <main>
+        <h1>Upcoming events</h1>
+        <ol id="event-container"></ol>
+        <template id="event-template">
+          <li> <!--//NOSONAR : this is because the template will be gone if clearing the ul -->
+            <img
+              class="event-image"
+              src="#"
+              title="event-image"
+              alt="event-image">
+
+            <div class="event-main-content">
+              <div class="event-title">
+                <h3 class="event-name"></h3>
+                <p class="event-interest"></p>
+              </div>
+              <p class="event-description view-more"></p>
+              <div class="event-bottom-content">
+                <div class="event-information">
+                  <span class="material-symbols-outlined">calendar_month</span>
+                  <p class="event-startdate"></p>
+                  <span class="material-symbols-outlined">payments</span>
+                  <p class="event-ticketprice"></p>
+                  <span class="material-symbols-outlined">location_on</span>
+                  <p class="event-location"></p>
+                </div>
+                <div class="event-options">
+                  <p class="favorite prevent-select"><span class="material-symbols-outlined event-option">favorite</span>Interested</p>
+                  <p class="view-more prevent-select"><span class="material-symbols-outlined event-option">visibility</span>More Info</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </template>
+        <dialog id="modal">
+          <p id="confirm-message">Do you want to receive notifications?</p>
+          <div id="modal-actions">
+            <button id="no">No</button>
+              <button id="yes">Yes</button>
+          </div>
+      </dialog>
+      </main>
+    </div>
+    <footer>
+      <nav id="bottom-navigation">
+        <a href="map.html"
+          ><span class="material-symbols-outlined">location_on</span></a
+        >
+        <a href="friends.html"
+          ><span class="material-symbols-outlined">groups</span></a
+        >
+        <a href="index.html" class="currentPage"
+          ><span class="material-symbols-outlined">calendar_today</span></a
+        >
+        <a href="tickets.html"
+          ><span class="material-symbols-outlined">confirmation_number</span></a
+        >
+        <a href="profile.html"
+          ><span class="material-symbols-outlined">person</span></a
+        >
+      </nav>
+    </footer>
+  </body>
+</html>

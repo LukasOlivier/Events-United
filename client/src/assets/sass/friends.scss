@@ -1,0 +1,139 @@
+@use "./main.scss" as *;
+$section-color: rgb(231, 231, 231);
+
+#title {
+    font-size: 3rem;
+    font-family: $title-font;
+    text-align: center;
+    margin-top: 3rem;
+    color: white;
+}
+
+main {
+    color: black;
+    nav {
+        display: inline-block;
+        width: auto;
+        margin: 0 auto 0 10vw;
+        ul {
+            display: flex;
+            flex-direction: row;
+        }
+        li {
+            padding: 0.7rem;
+            background: gray;
+            display: flex;
+            p {
+                align-self: center;
+            }
+        }
+        @include not-last-child(li) {
+            border-right: $secondary-color 0.1rem solid;
+        }
+        li:first-of-type {
+            border-top-left-radius: 0.5rem;
+        }
+        li:last-of-type {
+            border-top-right-radius: 0.5rem;
+        }
+        .selected {
+            background: $section-color;
+        }
+    }
+    #friends,
+    #suggestions {
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .no-items {
+            text-align: center;
+            margin-top: 10rem;
+        }
+        .friend {
+            background: white;
+            border: $secondary-color solid 0.1rem;
+            width: 90%;
+            margin: 0 auto 0 auto;
+            border-radius: 0.5rem;
+            display: flex;
+            padding: 1rem;
+            align-items: center;
+            .friend-info {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                height: 10rem;
+                width: 100%;
+            }
+            .actions {
+                margin-top: auto;
+                margin-bottom: 0;
+                flex-direction: row;
+                display: flex;
+                gap: 1rem;
+                button {
+                    border-radius: 2rem;
+                    padding: 0.5rem 1rem;
+                    background-color: $secondary-color;
+                    color: white;
+                    &:hover {
+                        color: $accent-color;
+                    }
+                    span {
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+            h3 {
+                margin-top: 2rem;
+                font-size: 1.5rem;
+                span:first-of-type {
+                    margin-right: 0.5rem;
+                }
+            }
+            .interests {
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                color: white;
+                li {
+                    background-color: $secondary-color;
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.5rem;
+                }
+                .no-interests {
+                    font-style: italic;
+                    background: gray;
+                }
+            }
+        }
+    }
+    .menu {
+        border-top: 2rem solid $section-color;
+        border-bottom: 2rem solid $section-color;
+        width: 80vw;
+        height: 70vh;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        background: $section-color;
+        margin: 0 auto 0 auto;
+        overflow-y: scroll;
+
+        h2 {
+            padding-top: 2rem;
+            display: flex;
+            align-items: center;
+        }
+        img {
+            width: 10rem;
+        }
+    }
+}
+
+#requests p {
+    margin-top: 10rem;
+    text-align: center;
+}

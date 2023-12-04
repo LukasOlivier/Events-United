@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Events United - My Tickets</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.2/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vertx/3.9.4/vertx-eventbus.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/view-tickets.css" />
+
+    <script src="assets/js/helper/localstorage.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/helper/api.js"></script>
+    <script src="assets/js/helper/helper.js"></script>
+    <script src="assets/js/helper/eb.js"></script>
+    <script src="assets/js/view-tickets/view-tickets.js" defer></script>
+
+    <link rel="icon" type="image/png" href="images/Events_United_Transparent.png">
+  </head>
+  <body>
+    <header>
+      <h1>My Tickets</h1>
+    </header>
+    <main>
+      <p class="hidden" id="no-tickets">
+        You don't have any tickets yet.<br /><span
+          >You can buy tickets on the detailed info page of an event.</span
+        >
+      </p>
+      <div id="scroll-container">
+      <ol id="ticket-container">
+        <template id="ticket-template">
+          <div class="ticket-c expired">
+          <li class="ticket">
+            <img src="images/qr-code.png" alt="qr-code" title="qr-code" />
+            <div class="ticket-info">
+              <h3 class="event-name"></h3>
+              <ol>
+                <li>
+                  <p>Date: <span class="event-startdate"></span></p>
+                </li>
+                <li>
+                  <p>Price: <span class="event-ticketprice"></span> MC</p>
+                </li>
+                <li>
+                  <p>Location:<span class="event-location"></span></p>
+                </li>
+                <li>
+                  <p>Interest: <span class="event-interest"></span></p>
+                </li>
+              </ol>
+            </div>
+          </li>
+          <div class="moreInfoButton hidden">
+            <p>btn</p>
+            <em class="top-right"></em>
+            <em class="bottom-right"></em>
+          </div>
+        </div>
+        </template>
+      </ol>
+      </div>
+    </main>
+    <footer>
+      <nav id="bottom-navigation">
+        <a href="map.html"
+          ><span class="material-symbols-outlined">location_on</span></a
+        >
+        <a href="friends.html"
+          ><span class="material-symbols-outlined">groups</span></a
+        >
+        <a href="index.html"
+          ><span class="material-symbols-outlined">calendar_today</span></a
+        >
+        <a href="tickets.html"
+          ><span class="material-symbols-outlined currentPage">confirmation_number</span></a
+        >
+        <a href="profile.html"
+          ><span class="material-symbols-outlined">person</span></a
+        >
+      </nav>
+    </footer>
+  </body>
+</html>

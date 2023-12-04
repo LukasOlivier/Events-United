@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@font-face {
+  font-family: "Mars";
+  src: url("../fonts/Mars.ttf");
+}
+* .hidden {
+  display: none;
+}
+
+html,
+body {
+  display: flex;
+  flex-flow: column;
+  background-color: #292f36;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  margin: 0;
+}
+
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+input,
+button,
+select {
+  border: white solid 0.1rem;
+  border-radius: 0.5rem;
+  color: black;
+  padding: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+button,
+.hoverable {
+  cursor: pointer;
+}
+button:hover,
+.hoverable:hover {
+  color: #ff8c42;
+}
+
+h1 {
+  font-family: "Mars", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 1rem;
+  font-size: 4rem;
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bc4f41;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #bc4f41;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 3rem;
+  display: flex;
+  flex-shrink: 0;
+  padding-top: 0.5rem;
+  background-color: #4c4c4c;
+}
+footer nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+footer nav a {
+  color: #c5c5c5;
+}
+footer nav :nth-child(3) {
+  transform: translateY(-2rem);
+  text-align: center;
+}
+footer nav :nth-child(3) span {
+  font-size: 4rem;
+  border-radius: 12rem 12rem 0 0;
+  width: 6rem;
+  background-color: #4c4c4c;
+  padding-top: 1rem;
+}
+footer nav #profile {
+  text-decoration: underline;
+  color: white;
+}
+footer nav .currentPage {
+  color: #ff8c42;
+}
+footer nav .material-symbols-outlined {
+  font-size: 3rem;
+}
+footer nav .material-symbols-outlined:hover {
+  color: #ff8c42;
+}
+
+.filled {
+  font-variation-settings: "FILL" 1;
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+}
+
+.disable-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */ /* Konqueror */
+  -moz-user-select: none; /* Old version of Firefox */
+  -ms-user-select: none; /* Internet Explorer or Edge */
+  user-select: none; /* All modern browsers */
+}
+
+#container .hidden {
+  display: none;
+}
+
+.payment-successful {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.payment-successful h1 {
+  display: flex;
+  align-items: center;
+}
+.payment-successful .options {
+  display: flex;
+  gap: 2rem;
+}
+
+main {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .material-symbols-outlined {
+  color: greenyellow;
+  font-size: 10rem;
+}
+main button {
+  display: flex;
+  justify-content: center;
+  width: 15rem;
+  font-size: large;
+}
+
+.overview ul {
+  margin-top: 2rem;
+}
+.overview ul li {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.overview ul li:last-child {
+  font-size: 1rem;
+}
+.overview ul .total-price {
+  font-size: 1.5rem;
+  border-top: 0.2rem solid white;
+  padding: 1.5rem 0 3rem 0;
+  font-weight: bold;
+}
+.overview button {
+  margin: 3rem auto 0 auto;
+}
+.overview h2 {
+  text-align: center;
+  font-size: 3rem;
+}

@@ -1,0 +1,106 @@
+@use "main" as *;
+body {
+  display: flex;
+  font-size: 1.5rem;
+  flex-direction: column;
+}
+
+main {
+  height: 93.65vh;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+article {
+  width: 80%;
+  display: flex;
+  margin: 3rem 0 3rem 0;
+  border: white solid 0.1rem;
+  padding: 2rem 2rem 2rem 3rem;
+  line-height: 120%;
+
+  #personal-info {
+    padding-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  div {
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  figure {
+    border-right: white solid 0.1rem;
+    width: 15rem;
+    padding-right: 3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+
+    img {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  li {
+    p {
+      display: inline;
+      margin-left: 0.5rem;
+    }
+    margin-bottom: 0.5rem;
+  }
+}
+
+#interests {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  align-items: center;
+
+  span {
+    font-size: 3rem;
+  }
+  p {
+    margin-bottom: 0.2rem;
+  }
+
+  #interests-container,
+  #non-interests-container {
+    width: 20rem;
+    height: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    gap: 1rem;
+    background: gray;
+    padding: 0.5rem;
+    border: gray solid 0.5rem;
+    border-radius: 0.5rem;
+    list-style: none;
+
+    li {
+      height: 1rem;
+      font-size: 1rem;
+      padding: 0.5rem;
+      background: #454545;
+      border: 0.1rem;
+      border-radius: 0.2rem;
+    }
+  }
+}

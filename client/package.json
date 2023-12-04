@@ -1,0 +1,46 @@
+{
+    "name": "2022-mars-client",
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+      "validate-html": "java -jar node_modules/vnu-jar/build/dist/vnu.jar --Werror --filterfile .vnuignore --skip-non-html ./src",
+      "validate-sonar-ci": "node_modules/sonar-scanner/bin/sonar-scanner",
+      "validate-sonar-local-mac": "node_modules/sonar-scanner/bin/sonar-scanner -Dsonar.host.url=https://sonar.ti.howest.be",
+      "validate-sonar-local-win": ".\\node_modules\\sonar-scanner\\bin\\sonar-scanner -Dsonar.host.url=https://sonar.ti.howest.be",
+      "validate-ci": "npm run validate-html && npm run validate-sonar-ci",
+      "validate-local-mac": "npm run validate-html && npm run validate-sonar-local-mac",
+      "validate-local-win": "npm run validate-html && npm run validate-sonar-local-win",
+      "test": "jest --coverage --watchAll --env=jsdom"
+    },
+    "dependencies": {
+      "sass": "^1.56.1",
+      "sonar-scanner": "^3.1.0",
+      "vnu-jar": "^20.2.28"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.12.7",
+      "@babel/preset-env": "^7.12.7",
+      "@testing-library/jest-dom": "^5.11.6",
+      "babel-jest": "^26.6.3",
+      "jest": "^26.6.3",
+      "jest-sonar-reporter": "^2.0.0",
+      "jsdom": "^15.1.1"
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "jest": {
+      "verbose": true,
+      "collectCoverage": true,
+      "testResultsProcessor": "jest-sonar-reporter",
+      "coveragePathIgnorePatterns": [
+        "/node_modules/"
+      ]
+    },
+    "jestSonar": {
+      "reportPath": "reports",
+      "reportFile": "test-report.xml",
+      "indent": 4
+    }
+  }  

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.2/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vertx/3.9.4/vertx-eventbus.min.js"></script>
+    <script src="assets/js/helper/localstorage.js"></script>
+    <script src="assets/js/helper/api.js"></script>
+    <script src="assets/js/helper/helper.js"></script>
+    <script src="assets/js/helper/eb.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/friends/initFriends.js" defer></script>
+    <script src="assets/js/friends/friends.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet" href="assets/css/friends.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+
+    <script src="assets/js/friends/friends.js" defer></script>
+
+    <link rel="icon" type="image/png" href="images/Events_United_Transparent.png">
+
+    <title>Events United - Friends</title>
+</head>
+<body>
+    <main>
+        <h2 id="title">My friends</h2>
+        <nav>
+             <ul>
+                <li class="selected hoverable" id="my-friends"><p>My friends</p></li>
+                <li class="hoverable" id="friend-requests"><p>Friend requests</p></li>
+                <li class="hoverable" id="friend-suggestions"><p>Friend suggestions</p></li>
+            </ul>
+        </nav>
+        <div class="menu" id="friends">
+            <p class="no-items">You don't have any friends yet.</p>
+            <ul></ul>
+            <template id="friend-template">
+                <li class="friend"> <!--//NOSONAR : this is because the template will be gone if clearing the ul-->
+                    <img src="#" alt="profile-picture" title="profile-picture">
+                    <div class="friend-info">
+                        <h3 class="name"><span class="firstname">Firstname</span><span class="lastname">Lastname</span></h3>
+                        <ul class="interests"><li class="no-interests"><p>No interests.</p></li></ul>
+                        <div class="actions">
+                            <button class="send-message hoverable"><span class="material-symbols-outlined">send</span> Send message</button>
+                            <button class="remove-friend hoverable"><span class="material-symbols-outlined">delete</span>Remove</button>
+                        </div>
+                    </div>
+                </li>
+            </template>
+        </div>
+
+        <div class="hidden menu" id="requests">
+            <p>Out of scope for POC</p>
+        </div>
+
+        <div class="hidden menu" id="suggestions">
+            <p class="no-items">You have no similar interests with other martians. Consider adding some in the <a href="profile.html">profile page</a></p>
+            <ul></ul>
+            <template id="suggestions-template">
+                <li class="friend"> <!--//NOSONAR : this is because the template will be gone if clearing the ul-->
+                    <img src="#" alt="profile-picture" title="profile-picture">
+                    <div class="friend-info">
+                        <h3 class="name"><span class="firstname">Niels</span><span class="lastname">Soete</span></h3>
+                        <ul class="interests"><li class="no-interests"><p>No interests.</p></li></ul>
+                        <div class="actions">
+                            <button class="send-friend-request"><span class="material-symbols-outlined">person_add</span> Send friend request</button>
+                            <button class="remove-suggestion"><span class="material-symbols-outlined">delete</span>Remove</button>
+                        </div>
+                    </div>
+                </li>
+            </template>
+        </div>
+    </main>
+    <footer>
+        <nav id="bottom-navigation">
+            <a href="map.html"><span class="material-symbols-outlined">location_on</span></a>
+            <a href="friends.html"><span class="material-symbols-outlined currentPage">groups</span></a>
+            <a href="index.html"><span class="material-symbols-outlined">calendar_today</span></a>
+            <a href="tickets.html"><span class="material-symbols-outlined">confirmation_number</span></a>
+            <a href="profile.html"><span class="material-symbols-outlined">person</span></a>  
+        </nav>
+    </footer>
+</body>
+</html>

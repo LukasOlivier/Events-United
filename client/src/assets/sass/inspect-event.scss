@@ -1,0 +1,212 @@
+@use "main" as *;
+main {
+  min-height: calc(100vh - 28rem);
+  /* The right value (28) can be changed depending on users screen! */
+}
+.already-bought {
+  background-color: gray;
+  opacity: 0.5;
+  cursor: not-allowed;
+  a:hover {
+    cursor: not-allowed;
+  }
+}
+
+article {
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  p {
+    height: 10rem;
+    font-size: 1rem;
+  }
+}
+
+.overview {
+  ul {
+    margin-top: 2rem;
+    li {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      #warning {
+        font-size: 1rem;
+      }
+    }
+
+    .total-price {
+      font-size: 1.5rem;
+      border-top: 0.2rem solid white;
+      padding: 1.5rem 0 3rem 0;
+      font-weight: bold;
+    }
+  }
+  button {
+    margin: 3rem auto 0 auto;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 3rem;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3rem;
+  button {
+    p {
+      margin: 0 auto 0 auto;
+    }
+    width: 10rem;
+  }
+}
+
+.form {
+  width: 30%;
+  ul {
+    margin-top: 2rem;
+    li {
+      display: flex;
+      flex-direction: row;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      &:last-child {
+        font-size: 1rem;
+      }
+      input,
+      select {
+        margin-right: 0;
+        margin-left: auto;
+        width: 10rem;
+      }
+    }
+
+    .total-price {
+      font-size: 1.5rem;
+      border-top: 0.2rem solid white;
+      padding: 1.5rem 0 3rem 0;
+      font-weight: bold;
+    }
+    button {
+      width: 3rem;
+    }
+  }
+}
+
+#main-header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-top: 1rem;
+  h2 {
+    font-size: 2rem;
+  }
+  #chips {
+    ul {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      li {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  #going-information {
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      li {
+        background-color: lighten($color: $secondary-color, $amount: 20);
+        &:hover {
+          background-color: $accent-color;
+          cursor: pointer;
+        }
+        p {
+          display: flex;
+          align-items: center;
+          gap: 0.2rem;
+        }
+        font-size: 1.3rem;
+        border-radius: 0.5rem;
+        display: flex;
+        margin-bottom: 0.2rem;
+        align-items: center;
+        padding: 0.4rem;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
+main,
+#page-header {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#page-header {
+  margin-top: 3rem;
+  img {
+    width: 100%;
+    height: 15rem;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    object-position: bottom;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    h2 {
+      font-size: 3.5rem;
+    }
+    h3 {
+      font-size: 1.7rem;
+      background-color: $accent-color;
+      padding: 0.25rem;
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+footer {
+  margin-top: auto;
+}
+
+// TICKETS:
+#tickets-container .hidden {
+  display: none;
+}
+
+.payment-successful {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+  }
+  .options {
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+#tickets-container {
+  .material-symbols-outlined {
+    color: greenyellow;
+    font-size: 10rem;
+  }
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
