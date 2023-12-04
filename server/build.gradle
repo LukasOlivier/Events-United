@@ -1,0 +1,83 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'jacoco'
+    id "org.sonarqube" version "3.3"
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "de.undercouch.download" version "4.0.4"
+}
+
+def junitVersion = "5.9.0"
+def vertxVersion = '4.2.4'
+def googleGsonVersion = "2.8.6"
+def mockWebServerVersion = "4.8.1"
+def h2version = "1.4.200"
+
+group 'be.howest.ti'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+dependencies {
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$junitVersion"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServerVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testImplementation "com.google.code.gson:gson:$googleGsonVersion"
+    testImplementation "io.vertx:vertx-junit5:$vertxVersion"
+    testImplementation "io.vertx:vertx-web-client:$vertxVersion"
+
+    implementation 'org.slf4j:slf4j-simple:1.7.33'
+    implementation 'org.slf4j:slf4j-nop:1.7.21'
+    implementation "io.vertx:vertx-core:$vertxVersion"
+    implementation "io.vertx:vertx-web:$vertxVersion"
+    implementation "io.vertx:vertx-web-api-contract:$vertxVersion"
+    implementation "io.vertx:vertx-config:$vertxVersion"
+    implementation "io.vertx:vertx-web-client:$vertxVersion"
+    implementation "io.vertx:vertx-web-openapi:$vertxVersion"
+    implementation "com.h2database:h2:$h2version"
+
+    // https://groups.google.com/forum/#!topic/vertx/MNb8-tvdp7s
+    implementation "io.vertx:vertx-codegen:$vertxVersion"
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+    dependsOn test // tests are required to run before generating the report
+}
+
+shadowJar {
+    archiveClassifier.set('fat')
+    manifest {
+        attributes 'Main-Verticle': "$mainVerticleName"
+    }
+    mergeServiceFiles {
+        include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
+    }
+}
+
+
+mainClassName = 'io.vertx.core.Launcher'
+
+run {
+    systemProperty(
+            "vertx.logger-delegate-factory-class-name",
+            "io.vertx.core.logging.JULLogDelegateFactory"
+    )
+    args = ['run', 'be.howest.ti.mars.web.WebServer', "--launcher-class=$mainClassName",
+            "-Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.JULLogDelegateFactory"]
+}

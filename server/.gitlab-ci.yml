@@ -1,0 +1,58 @@
+image: monitor:5000/gradle733:2
+
+stages:
+ - build
+ - QA
+ - deploy
+
+before_script:
+  - chmod +x gradlew
+
+build-jar:
+  stage: build
+  only:
+    - main
+  except:
+    changes:
+      - documents/**/*
+  script:
+    - gradle shadowJar
+  artifacts:
+    paths:
+      - build/libs/
+
+sonarqube:
+  stage: QA
+  except:
+    changes:
+      - documents/**/*
+  script:
+    - gradle test --info
+    - gradle sonarqube -Dsonar.host.url=http://172.18.18.129
+  artifacts:
+    when: always
+    reports:
+      junit: build/test-results/test/**/TEST-*.xml
+
+deploy:
+  image: monitor:5000/deployproject:2
+  before_script:
+    - echo "we don't need gradle or maven anymore, nice!"
+  stage: deploy
+  only:
+    - main
+  except:
+    changes:
+      - documents/**/*
+  script:
+    - cd build/libs/
+    - rename 's/.*\.jar$/mars.jar/' *.jar
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -H 172.18.18.200 >> ~/.ssh/known_hosts
+    - scp -q mars.jar gitlab-runner@172.18.18.200:"/opt/group-${CI_PROJECT_NAMESPACE:(-2)}/mars.jar"
+    - ssh gitlab-runner@172.18.18.200 sudo systemctl restart group-${CI_PROJECT_NAMESPACE:(-2)}
+    - systemctl -H gitlab-runner@172.18.18.200 status group-${CI_PROJECT_NAMESPACE:(-2)}
+  environment: production
