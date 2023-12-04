@@ -1,0 +1,21 @@
+image: monitor:5000/buildproject:1
+
+stages:
+ - deploy
+
+deploy-api:
+  stage: deploy
+  only:
+    - main
+  except:
+    changes:
+      - documents/**/*
+  script:
+    - pwd
+    - eval $(ssh-agent -s)
+    - echo ${SSH_PRIVATE_KEY:0:5}
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -H 172.18.18.200 >> ~/.ssh/known_hosts
+    - scp -q api-spec/openapi-mars.yaml gitlab-runner@172.18.18.200:"/opt/specifications/openapi-group-${CI_PROJECT_NAMESPACE:(-2)}.yaml"

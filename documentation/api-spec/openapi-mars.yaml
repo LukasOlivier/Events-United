@@ -1,0 +1,532 @@
+openapi: 3.0.3
+info:
+  title: Events United - Mars-02
+  description: Events organizer on Mars - Mars-02
+  version: 0.0.4
+servers:
+  - url: https://project-ii.ti.howest.be/mars-02
+    description: Public API
+  - url: http://localhost:8080/
+    description: Local API
+paths:
+  /api/events:
+    get:
+      tags:
+        - events
+      description: Fetch all existing events
+      operationId: getEvents
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  events:
+                    $ref: '#/components/schemas/events'
+  /api/events/{eventId}:
+    get:
+      tags:
+        - events
+      description: Fetch event matching the eventId
+      operationId: getEvent
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+          description: The event id
+          example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/event'
+              examples:
+                The martian games:
+                  value:
+                    id: 1
+                    name: The Marsian Games
+                    description: The Marsian Games is an event for young and old
+                    startDate: 05/12/2023
+                    endDate: 20/12/2023
+                    interest: sport
+                    location: marsdome
+                    attendees: 200
+                    interested: 234
+                    ticketPrice: 50
+  /api/events/create:
+    post:
+      tags:
+        - events
+      summary: Creates a new event.
+      description: Create a new event.
+      operationId: createEvent
+      requestBody:
+        $ref: '#/components/requestBodies/createEvent'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/event'
+  /api/users:
+    get:
+      tags:
+        - users
+      parameters:
+        - in: query
+          name: firstName
+          schema:
+            type: string
+        - in: query
+          name: lastName
+          schema:
+            type: string
+      description: Fetch all existing users
+      operationId: getUsers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    $ref: '#/components/schemas/users'
+  /api/users/{userId}:
+    get:
+      tags:
+        - users
+      description: Fetch user matching the userId
+      operationId: getUser
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: The user id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+  /api/interests:
+    get:
+      tags:
+        - interests
+      description: Fetch all existing interests
+      operationId: getInterests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  interests:
+                    $ref: '#/components/schemas/interests'
+  /api/users/{userId}/{eventId}/ticket/buy:
+    post:
+      tags:
+        - events
+      description: Buy ticket for event with matching eventId
+      operationId: buyTicket
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: The user id
+          example: 1
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+          description: The event id
+          example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/event'
+  /api/users/{userId}/{eventId}/interested/add:
+    post:
+      tags:
+        - events
+      description: Set as interested for event with matching eventId
+      operationId: addInterestedUser
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: The user id
+          example: 1
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+          description: The event id
+          example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/event'
+  /api/users/{userId}/{eventId}/interested/remove:
+    delete:
+      tags:
+        - events
+      description: Set as interested for event with matching eventId
+      operationId: removeInterestedUser
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: The user id
+          example: 1
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+          description: The event id
+          example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/event'
+  /api/users/{userId}/tickets:
+    get:
+      tags:
+        - events
+      description: Fetch all tickets for mathcing userId
+      operationId: getTickets
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: The user id
+          example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tickets'
+  /api/users/{userId}/interests:
+    get:
+      tags:
+        - users
+      description: Fetch all interests for matching userId
+      operationId: getInterestsOfUser
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: The user id
+          example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/interests'
+  /api/users/{userId}/{interest}/interests/add:
+    post:
+      tags:
+        - users
+      description: Add interest to user
+      operationId: addInterest
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: The user id
+          example: 1
+        - in: path
+          name: interest
+          required: true
+          schema:
+            type: string
+          description: The interest you want to add
+          example: sports
+      responses:
+        '200':
+          description: OK
+  /api/users/{userId}/{interest}/interests/remove:
+    delete:
+      tags:
+        - users
+      description: Add interest to user
+      operationId: removeInterestFromUser
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: The user id
+          example: 1
+        - in: path
+          name: interest
+          required: true
+          schema:
+            type: string
+          description: The interest you want to remove
+          example: sport
+      responses:
+        '200':
+          description: OK
+  /api/users/{userId}/friends:
+    get:
+      tags:
+        - users
+      description: Fetch all friends for matching userId
+      operationId: getFriendsOfUser
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: The user id
+          example: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/users'
+  /api/users/{userId}/{friendId}/friends/add:
+    post:
+      tags:
+        - users
+      description: Add friend to user
+      operationId: addFriend
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: The user id
+          example: 1
+        - in: path
+          name: friendId
+          required: true
+          schema:
+            type: integer
+          description: The friend id you want to add
+          example: 2
+      responses:
+        '200':
+          description: OK
+  /api/users/{userId}/{friendId}/friends/remove:
+    delete:
+      tags:
+        - users
+      description: Remove friend from user's friends list
+      operationId: removeFriendFromUserFriends
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: The user id
+          example: 1
+        - in: path
+          name: friendId
+          required: true
+          schema:
+            type: integer
+          description: The friendId you want to remove
+          example: 1
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+          example: The Marsian Games
+        description:
+          type: string
+          example: The Marsian Games is an event for young and old.
+        startDate:
+          type: string
+          format: date
+          example: 05/12/2023
+        endDate:
+          type: string
+          format: date
+          example: 20/12/2023
+        interest:
+          type: string
+          example: Sports
+        attendees:
+          type: integer
+          format: int64
+          example: '100'
+        interesed:
+          type: integer
+          format: int64
+          example: '550'
+        ticketPrice:
+          type: integer
+          format: int64
+          example: 20
+        location:
+          type: string
+          example: Marsdome 1
+      required:
+        - title
+        - description
+        - startDate
+        - endDate
+        - interests
+        - ticketPrice'
+    events:
+      type: array
+      items:
+        $ref: '#/components/schemas/event'
+    user:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstname:
+          type: string
+          example: Koenk
+        lastname:
+          type: string
+          example: Koenk
+        birthdate:
+          type: string
+          format: date
+          example: '1990-01-01'
+        height:
+          type: integer
+          format: int64
+          example: '180'
+        gender:
+          type: string
+          example: M
+        description:
+          type: string
+          example: I am a cool man
+        age:
+          type: integer
+          example: 29
+        friends:
+          type: array
+          items:
+              $ref: '#/components/schemas/user'
+        favorites:
+          type: array
+          items:
+            $ref: '#/components/schemas/event'
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/event'
+    users:
+      type: array
+      items:
+        $ref: '#/components/schemas/user'
+    interest:
+      type: string
+      example: sport
+    interests:
+      type: array
+      items:
+        $ref: '#/components/schemas/interest'
+    ticket:
+      type: object
+      items:
+        $ref: '#/components/schemas/event'
+    tickets:
+      type: array
+      items:
+        $ref: '#/components/schemas/ticket'
+  requestBodies:
+    createEvent:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+                example: Rover race
+              description:
+                type: string
+                example: Race with your rover against other Martians
+              location:
+                type: string
+                example: Martian racetrack
+              startDate:
+                type: string
+                format: date
+                example: "2023-12-22"
+              endDate:
+                type: string
+                format: date
+                example: "2024-12-22"
+              interest:
+                type: string
+                example: ROVERS
+              ticketPrice:
+                type: integer
+                format: int64
+                example: '20'
+            required:
+              - title
+              - description
+              - location
+              - startDate
+              - endDate
+              - interest
+              - ticketPrice
